@@ -2,7 +2,7 @@
 class SalleCours extends AppModel {
 	var $name = 'SalleCours';
 	var $validate = array(
-		'batiments_id' => array(
+		'batiment_id' => array(
 			'numeric' => array(
 				'rule' => array('numeric'),
 				//'message' => 'Your custom message here',
@@ -12,7 +12,7 @@ class SalleCours extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'annees_id' => array(
+		'annee_id' => array(
 			'numeric' => array(
 				'rule' => array('numeric'),
 				//'message' => 'Your custom message here',
@@ -26,16 +26,16 @@ class SalleCours extends AppModel {
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
 	var $belongsTo = array(
-		'Batiments' => array(
-			'className' => 'Batiments',
-			'foreignKey' => 'batiments_id',
+		'Batiment' => array(
+			'className' => 'Batiment',
+			'foreignKey' => 'batiment_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
 		),
-		'Annees' => array(
-			'className' => 'Annees',
-			'foreignKey' => 'annees_id',
+		'Annee' => array(
+			'className' => 'Annee',
+			'foreignKey' => 'annee_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
@@ -43,11 +43,11 @@ class SalleCours extends AppModel {
 	);
 
 	var $hasAndBelongsToMany = array(
-		'HasClass' => array(
-			'className' => 'HasClass',
-			'joinTable' => 'salle_cours_has_classes',
+		'Classe' => array(
+			'className' => 'Classe',
+			'joinTable' => 'classes_salle_cours',
 			'foreignKey' => 'salle_cours_id',
-			'associationForeignKey' => 'has_class_id',
+			'associationForeignKey' => 'classe_id',
 			'unique' => true,
 			'conditions' => '',
 			'fields' => '',

@@ -10,10 +10,18 @@ class AcademiesController extends AppController {
 
 	function view($id = null) {
 		if (!$id) {
-			$this->Session->setFlash(__('Invalid academie', true));
+		$this->Session->setFlash(__('Invalid academie', true));
 			$this->redirect(array('action' => 'index'));
-		}
-		$this->set('academie', $this->Academie->read(null, $id));
+			}
+		if($this->Academie->findById($id)!=0){
+			$this->set('academie', $this->Academie->read(null, $id));
+			}else{
+			$this->Session->setFlash(__('Invalid academie', true));
+			$this->cakeError('error404', array(array('url' => $this->action)));
+			$this->redirect($this->referer());
+			}
+		
+		
 	}
 
 	function add() {

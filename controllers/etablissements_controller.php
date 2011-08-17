@@ -2,7 +2,6 @@
 class EtablissementsController extends AppController {
 
 	var $name = 'Etablissements';
-	var $use = array('Etablissement','Academie');
 
 	function index() {
 		$this->Etablissement->recursive = 0;

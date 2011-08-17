@@ -13,7 +13,7 @@
 			<th><?php echo $this->Paginator->sort('etab_boite_postale');?></th>
 			<th><?php echo $this->Paginator->sort('etab_code_acces');?></th>
 			<th><?php echo $this->Paginator->sort('eta_type');?></th>
-			<th><?php echo $this->Paginator->sort('academies_id');?></th>
+			<th><?php echo $this->Paginator->sort('academie_id');?></th>
 			<th class="actions"><?php __('Actions');?></th>
 	</tr>
 	<?php
@@ -37,7 +37,7 @@
 		<td><?php echo $etablissement['Etablissement']['etab_code_acces']; ?>&nbsp;</td>
 		<td><?php echo $etablissement['Etablissement']['eta_type']; ?>&nbsp;</td>
 		<td>
-			<?php echo $this->Html->link($etablissement['Academies']['id'], array('controller' => 'academies', 'action' => 'view', $etablissement['Academies']['id'])); ?>
+			<?php echo $this->Html->link($etablissement['Academie']['id'], array('controller' => 'academies', 'action' => 'view', $etablissement['Academie']['id'])); ?>
 		</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View', true), array('action' => 'view', $etablissement['Etablissement']['id'])); ?>
@@ -66,6 +66,16 @@
 	<ul>
 		<li><?php echo $this->Html->link(__('New Etablissement', true), array('action' => 'add')); ?></li>
 		<li><?php echo $this->Html->link(__('List Academies', true), array('controller' => 'academies', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Academies', true), array('controller' => 'academies', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Academie', true), array('controller' => 'academies', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Absences', true), array('controller' => 'absences', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Absence', true), array('controller' => 'absences', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Batiments', true), array('controller' => 'batiments', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Batiment', true), array('controller' => 'batiments', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Classes', true), array('controller' => 'classes', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Classe', true), array('controller' => 'classes', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Eleves', true), array('controller' => 'eleves', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Eleve', true), array('controller' => 'eleves', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Personnels', true), array('controller' => 'personnels', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Personnel', true), array('controller' => 'personnels', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

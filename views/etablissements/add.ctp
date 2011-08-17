@@ -13,7 +13,7 @@
 		echo $this->Form->input('etab_boite_postale');
 		echo $this->Form->input('etab_code_acces');
 		echo $this->Form->input('eta_type');
-		echo $this->Form->input('academies_id');
+		echo $this->Form->input('academie_id');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit', true));?>
@@ -24,6 +24,16 @@
 
 		<li><?php echo $this->Html->link(__('List Etablissements', true), array('action' => 'index'));?></li>
 		<li><?php echo $this->Html->link(__('List Academies', true), array('controller' => 'academies', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Academies', true), array('controller' => 'academies', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Academie', true), array('controller' => 'academies', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Absences', true), array('controller' => 'absences', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Absence', true), array('controller' => 'absences', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Batiments', true), array('controller' => 'batiments', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Batiment', true), array('controller' => 'batiments', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Classes', true), array('controller' => 'classes', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Classe', true), array('controller' => 'classes', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Eleves', true), array('controller' => 'eleves', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Eleve', true), array('controller' => 'eleves', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Personnels', true), array('controller' => 'personnels', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Personnel', true), array('controller' => 'personnels', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

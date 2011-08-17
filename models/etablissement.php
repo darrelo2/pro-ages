@@ -42,7 +42,7 @@ class Etablissement extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'academies_id' => array(
+		'academie_id' => array(
 			'numeric' => array(
 				'rule' => array('numeric'),
 				//'message' => 'Your custom message here',
@@ -56,12 +56,81 @@ class Etablissement extends AppModel {
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
 	var $belongsTo = array(
-		'Academies' => array(
-			'className' => 'Academies',
-			'foreignKey' => 'academies_id',
+		'Academie' => array(
+			'className' => 'Academie',
+			'foreignKey' => 'academie_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
 		)
 	);
+
+	var $hasMany = array(
+		'Absence' => array(
+			'className' => 'Absence',
+			'foreignKey' => 'etablissement_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
+		'Batiment' => array(
+			'className' => 'Batiment',
+			'foreignKey' => 'etablissement_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
+		'Classe' => array(
+			'className' => 'Classe',
+			'foreignKey' => 'etablissement_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
+		'Eleve' => array(
+			'className' => 'Eleve',
+			'foreignKey' => 'etablissement_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
+		'Personnel' => array(
+			'className' => 'Personnel',
+			'foreignKey' => 'etablissement_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		)
+	);
+
 }

@@ -2,36 +2,6 @@
 class Absence extends AppModel {
 	var $name = 'Absence';
 	var $validate = array(
-		'abs_date' => array(
-			'date' => array(
-				'rule' => array('date'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-		'abs_date_debut' => array(
-			'date' => array(
-				'rule' => array('date'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-		'abs_date_fin' => array(
-			'date' => array(
-				'rule' => array('date'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
 		'abs_motif' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
@@ -42,17 +12,7 @@ class Absence extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'abs_justifie' => array(
-			'boolean' => array(
-				'rule' => array('boolean'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-		'annees_id' => array(
+		'annee_id' => array(
 			'numeric' => array(
 				'rule' => array('numeric'),
 				//'message' => 'Your custom message here',
@@ -62,39 +22,9 @@ class Absence extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'absences_id' => array(
+		'etablissement_id' => array(
 			'numeric' => array(
 				'rule' => array('numeric'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-		'etablissements_id' => array(
-			'numeric' => array(
-				'rule' => array('numeric'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-		'created' => array(
-			'date' => array(
-				'rule' => array('date'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-		'modified' => array(
-			'date' => array(
-				'rule' => array('date'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
@@ -106,23 +36,16 @@ class Absence extends AppModel {
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
 	var $belongsTo = array(
-		'Annees' => array(
-			'className' => 'Annees',
-			'foreignKey' => 'annees_id',
+		'Annee' => array(
+			'className' => 'Annee',
+			'foreignKey' => 'annee_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
 		),
-		'Absences' => array(
-			'className' => 'Absences',
-			'foreignKey' => 'absences_id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
-		),
-		'Etablissements' => array(
-			'className' => 'Etablissements',
-			'foreignKey' => 'etablissements_id',
+		'Etablissement' => array(
+			'className' => 'Etablissement',
+			'foreignKey' => 'etablissement_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
@@ -130,11 +53,11 @@ class Absence extends AppModel {
 	);
 
 	var $hasAndBelongsToMany = array(
-		'HasEleve' => array(
-			'className' => 'HasEleve',
-			'joinTable' => 'absences_has_eleves',
+		'Eleve' => array(
+			'className' => 'Eleve',
+			'joinTable' => 'absences_eleves',
 			'foreignKey' => 'absence_id',
-			'associationForeignKey' => 'has_eleve_id',
+			'associationForeignKey' => 'eleve_id',
 			'unique' => true,
 			'conditions' => '',
 			'fields' => '',
@@ -145,11 +68,11 @@ class Absence extends AppModel {
 			'deleteQuery' => '',
 			'insertQuery' => ''
 		),
-		'HasPersonnel' => array(
-			'className' => 'HasPersonnel',
-			'joinTable' => 'absences_has_personnels',
+		'Personnel' => array(
+			'className' => 'Personnel',
+			'joinTable' => 'absences_personnels',
 			'foreignKey' => 'absence_id',
-			'associationForeignKey' => 'has_personnel_id',
+			'associationForeignKey' => 'personnel_id',
 			'unique' => true,
 			'conditions' => '',
 			'fields' => '',

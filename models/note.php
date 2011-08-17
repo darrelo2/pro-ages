@@ -2,17 +2,7 @@
 class Note extends AppModel {
 	var $name = 'Note';
 	var $validate = array(
-		'note' => array(
-			'numeric' => array(
-				'rule' => array('numeric'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-		'annees_id' => array(
+		'annee_id' => array(
 			'numeric' => array(
 				'rule' => array('numeric'),
 				//'message' => 'Your custom message here',
@@ -26,9 +16,9 @@ class Note extends AppModel {
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
 	var $belongsTo = array(
-		'Annees' => array(
-			'className' => 'Annees',
-			'foreignKey' => 'annees_id',
+		'Annee' => array(
+			'className' => 'Annee',
+			'foreignKey' => 'annee_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
@@ -36,11 +26,11 @@ class Note extends AppModel {
 	);
 
 	var $hasAndBelongsToMany = array(
-		'HasClass' => array(
-			'className' => 'HasClass',
-			'joinTable' => 'notes_has_classes',
+		'Classe' => array(
+			'className' => 'Classe',
+			'joinTable' => 'classes_notes',
 			'foreignKey' => 'note_id',
-			'associationForeignKey' => 'has_class_id',
+			'associationForeignKey' => 'classe_id',
 			'unique' => true,
 			'conditions' => '',
 			'fields' => '',
@@ -51,11 +41,11 @@ class Note extends AppModel {
 			'deleteQuery' => '',
 			'insertQuery' => ''
 		),
-		'HasEleve' => array(
-			'className' => 'HasEleve',
-			'joinTable' => 'notes_has_eleves',
+		'Eleve' => array(
+			'className' => 'Eleve',
+			'joinTable' => 'eleves_notes',
 			'foreignKey' => 'note_id',
-			'associationForeignKey' => 'has_eleve_id',
+			'associationForeignKey' => 'eleve_id',
 			'unique' => true,
 			'conditions' => '',
 			'fields' => '',
@@ -66,11 +56,11 @@ class Note extends AppModel {
 			'deleteQuery' => '',
 			'insertQuery' => ''
 		),
-		'HasMatiere' => array(
-			'className' => 'HasMatiere',
-			'joinTable' => 'notes_has_matieres',
+		'Matiere' => array(
+			'className' => 'Matiere',
+			'joinTable' => 'matieres_notes',
 			'foreignKey' => 'note_id',
-			'associationForeignKey' => 'has_matiere_id',
+			'associationForeignKey' => 'matiere_id',
 			'unique' => true,
 			'conditions' => '',
 			'fields' => '',
@@ -81,11 +71,11 @@ class Note extends AppModel {
 			'deleteQuery' => '',
 			'insertQuery' => ''
 		),
-		'HasPersonnel' => array(
-			'className' => 'HasPersonnel',
-			'joinTable' => 'notes_has_personnels',
+		'Personnel' => array(
+			'className' => 'Personnel',
+			'joinTable' => 'notes_personnels',
 			'foreignKey' => 'note_id',
-			'associationForeignKey' => 'has_personnel_id',
+			'associationForeignKey' => 'personnel_id',
 			'unique' => true,
 			'conditions' => '',
 			'fields' => '',

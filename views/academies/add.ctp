@@ -17,5 +17,7 @@
 	<ul>
 
 		<li><?php echo $this->Html->link(__('List Academies', true), array('action' => 'index'));?></li>
+		<li><?php echo $this->Html->link(__('List Etablissements', true), array('controller' => 'etablissements', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Etablissement', true), array('controller' => 'etablissements', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

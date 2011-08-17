@@ -1,7 +1,6 @@
 <?php
 class Academie extends AppModel {
 	var $name = 'Academie';
-	var $displayField = 'acad_nom';
 	var $validate = array(
 		'acad_nom' => array(
 			'notempty' => array(
@@ -44,4 +43,22 @@ class Academie extends AppModel {
 			),
 		),
 	);
+	//The Associations below have been created with all possible keys, those that are not needed can be removed
+
+	var $hasMany = array(
+		'Etablissement' => array(
+			'className' => 'Etablissement',
+			'foreignKey' => 'academie_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		)
+	);
+
 }

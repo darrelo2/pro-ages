@@ -2,7 +2,7 @@
 class Tuteur extends AppModel {
 	var $name = 'Tuteur';
 	var $validate = array(
-		'part_matricule' => array(
+		'tut_nom' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
 				//'message' => 'Your custom message here',
@@ -12,7 +12,7 @@ class Tuteur extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'part_nom' => array(
+		'tut_prenom' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
 				//'message' => 'Your custom message here',
@@ -22,17 +22,7 @@ class Tuteur extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'part_prenom' => array(
-			'notempty' => array(
-				'rule' => array('notempty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-		'part_telephone_fixe' => array(
+		'tut_telephone_fixe' => array(
 			'phone' => array(
 				'rule' => array('phone'),
 				//'message' => 'Your custom message here',
@@ -42,7 +32,7 @@ class Tuteur extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'part_portable1' => array(
+		'tut_portable1' => array(
 			'phone' => array(
 				'rule' => array('phone'),
 				//'message' => 'Your custom message here',
@@ -52,7 +42,7 @@ class Tuteur extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'part_telephone_pro' => array(
+		'tut_telephone_pro' => array(
 			'phone' => array(
 				'rule' => array('phone'),
 				//'message' => 'Your custom message here',
@@ -62,7 +52,7 @@ class Tuteur extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'part_email' => array(
+		'tut_email' => array(
 			'email' => array(
 				'rule' => array('email'),
 				//'message' => 'Your custom message here',
@@ -72,7 +62,7 @@ class Tuteur extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'annees_id' => array(
+		'annee_id' => array(
 			'numeric' => array(
 				'rule' => array('numeric'),
 				//'message' => 'Your custom message here',
@@ -86,9 +76,9 @@ class Tuteur extends AppModel {
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
 	var $belongsTo = array(
-		'Annees' => array(
-			'className' => 'Annees',
-			'foreignKey' => 'annees_id',
+		'Annee' => array(
+			'className' => 'Annee',
+			'foreignKey' => 'annee_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
@@ -96,11 +86,11 @@ class Tuteur extends AppModel {
 	);
 
 	var $hasAndBelongsToMany = array(
-		'HasEleve' => array(
-			'className' => 'HasEleve',
-			'joinTable' => 'tuteurs_has_eleves',
+		'Eleve' => array(
+			'className' => 'Eleve',
+			'joinTable' => 'eleves_tuteurs',
 			'foreignKey' => 'tuteur_id',
-			'associationForeignKey' => 'has_eleve_id',
+			'associationForeignKey' => 'eleve_id',
 			'unique' => true,
 			'conditions' => '',
 			'fields' => '',

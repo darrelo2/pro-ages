@@ -2,9 +2,9 @@
 class Classe extends AppModel {
 	var $name = 'Classe';
 	var $validate = array(
-		'clas_nom' => array(
-			'notempty' => array(
-				'rule' => array('notempty'),
+		'annee_id' => array(
+			'numeric' => array(
+				'rule' => array('numeric'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
@@ -12,17 +12,7 @@ class Classe extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'clas_code' => array(
-			'notempty' => array(
-				'rule' => array('notempty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-		'annees_id' => array(
+		'etablissement_id' => array(
 			'numeric' => array(
 				'rule' => array('numeric'),
 				//'message' => 'Your custom message here',
@@ -36,21 +26,45 @@ class Classe extends AppModel {
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
 	var $belongsTo = array(
-		'Annees' => array(
-			'className' => 'Annees',
-			'foreignKey' => 'annees_id',
+		'Annee' => array(
+			'className' => 'Annee',
+			'foreignKey' => 'annee_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		),
+		'Etablissement' => array(
+			'className' => 'Etablissement',
+			'foreignKey' => 'etablissement_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
 		)
 	);
 
+	var $hasMany = array(
+		'Eleve' => array(
+			'className' => 'Eleve',
+			'foreignKey' => 'classe_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		)
+	);
+
+
 	var $hasAndBelongsToMany = array(
-		'MatieresHa' => array(
-			'className' => 'MatieresHa',
-			'joinTable' => 'matieres_has_classes',
+		'Matiere' => array(
+			'className' => 'Matiere',
+			'joinTable' => 'classes_matieres',
 			'foreignKey' => 'classe_id',
-			'associationForeignKey' => 'matieres_ha_id',
+			'associationForeignKey' => 'matiere_id',
 			'unique' => true,
 			'conditions' => '',
 			'fields' => '',
@@ -61,11 +75,11 @@ class Classe extends AppModel {
 			'deleteQuery' => '',
 			'insertQuery' => ''
 		),
-		'NotesHa' => array(
-			'className' => 'NotesHa',
-			'joinTable' => 'notes_has_classes',
+		'Note' => array(
+			'className' => 'Note',
+			'joinTable' => 'classes_notes',
 			'foreignKey' => 'classe_id',
-			'associationForeignKey' => 'notes_ha_id',
+			'associationForeignKey' => 'note_id',
 			'unique' => true,
 			'conditions' => '',
 			'fields' => '',
@@ -76,11 +90,11 @@ class Classe extends AppModel {
 			'deleteQuery' => '',
 			'insertQuery' => ''
 		),
-		'PersonnelsHa' => array(
-			'className' => 'PersonnelsHa',
-			'joinTable' => 'personnels_has_classes',
+		'Personnel' => array(
+			'className' => 'Personnel',
+			'joinTable' => 'classes_personnels',
 			'foreignKey' => 'classe_id',
-			'associationForeignKey' => 'personnels_ha_id',
+			'associationForeignKey' => 'personnel_id',
 			'unique' => true,
 			'conditions' => '',
 			'fields' => '',
@@ -91,11 +105,11 @@ class Classe extends AppModel {
 			'deleteQuery' => '',
 			'insertQuery' => ''
 		),
-		'SalleCoursHa' => array(
-			'className' => 'SalleCoursHa',
-			'joinTable' => 'salle_cours_has_classes',
+		'SalleCours' => array(
+			'className' => 'SalleCours',
+			'joinTable' => 'classes_salle_cours',
 			'foreignKey' => 'classe_id',
-			'associationForeignKey' => 'salle_cours_ha_id',
+			'associationForeignKey' => 'salle_cours_id',
 			'unique' => true,
 			'conditions' => '',
 			'fields' => '',

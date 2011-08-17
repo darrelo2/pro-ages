@@ -52,6 +52,26 @@ class Eleve extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
+		'elev_telephone_fixe' => array(
+			'phone' => array(
+				'rule' => array('phone'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'elev_portable1' => array(
+			'phone' => array(
+				'rule' => array('phone'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
 		'elev_sexe' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
@@ -73,8 +93,8 @@ class Eleve extends AppModel {
 			),
 		),
 		'elev_date_inscription' => array(
-			'date' => array(
-				'rule' => array('date'),
+			'notempty' => array(
+				'rule' => array('notempty'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
@@ -82,7 +102,7 @@ class Eleve extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'classes_id' => array(
+		'classe_id' => array(
 			'numeric' => array(
 				'rule' => array('numeric'),
 				//'message' => 'Your custom message here',
@@ -92,7 +112,7 @@ class Eleve extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'annees_id' => array(
+		'annee_id' => array(
 			'numeric' => array(
 				'rule' => array('numeric'),
 				//'message' => 'Your custom message here',
@@ -102,7 +122,7 @@ class Eleve extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'etablissements_id' => array(
+		'etablissement_id' => array(
 			'numeric' => array(
 				'rule' => array('numeric'),
 				//'message' => 'Your custom message here',
@@ -116,23 +136,23 @@ class Eleve extends AppModel {
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
 	var $belongsTo = array(
-		'Classes' => array(
-			'className' => 'Classes',
-			'foreignKey' => 'classes_id',
+		'Classe' => array(
+			'className' => 'Classe',
+			'foreignKey' => 'classe_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
 		),
-		'Annees' => array(
-			'className' => 'Annees',
-			'foreignKey' => 'annees_id',
+		'Annee' => array(
+			'className' => 'Annee',
+			'foreignKey' => 'annee_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
 		),
-		'Etablissements' => array(
-			'className' => 'Etablissements',
-			'foreignKey' => 'etablissements_id',
+		'Etablissement' => array(
+			'className' => 'Etablissement',
+			'foreignKey' => 'etablissement_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
@@ -140,11 +160,11 @@ class Eleve extends AppModel {
 	);
 
 	var $hasAndBelongsToMany = array(
-		'AbsencesHa' => array(
-			'className' => 'AbsencesHa',
-			'joinTable' => 'absences_has_eleves',
+		'Absence' => array(
+			'className' => 'Absence',
+			'joinTable' => 'absences_eleves',
 			'foreignKey' => 'eleve_id',
-			'associationForeignKey' => 'absences_ha_id',
+			'associationForeignKey' => 'absence_id',
 			'unique' => true,
 			'conditions' => '',
 			'fields' => '',
@@ -155,11 +175,11 @@ class Eleve extends AppModel {
 			'deleteQuery' => '',
 			'insertQuery' => ''
 		),
-		'HasBulletin' => array(
-			'className' => 'HasBulletin',
-			'joinTable' => 'eleves_has_bulletins',
+		'Bulletin' => array(
+			'className' => 'Bulletin',
+			'joinTable' => 'bulletins_eleves',
 			'foreignKey' => 'eleve_id',
-			'associationForeignKey' => 'has_bulletin_id',
+			'associationForeignKey' => 'bulletin_id',
 			'unique' => true,
 			'conditions' => '',
 			'fields' => '',
@@ -170,11 +190,11 @@ class Eleve extends AppModel {
 			'deleteQuery' => '',
 			'insertQuery' => ''
 		),
-		'NotesHa' => array(
-			'className' => 'NotesHa',
-			'joinTable' => 'notes_has_eleves',
+		'Note' => array(
+			'className' => 'Note',
+			'joinTable' => 'eleves_notes',
 			'foreignKey' => 'eleve_id',
-			'associationForeignKey' => 'notes_ha_id',
+			'associationForeignKey' => 'note_id',
 			'unique' => true,
 			'conditions' => '',
 			'fields' => '',
@@ -185,11 +205,11 @@ class Eleve extends AppModel {
 			'deleteQuery' => '',
 			'insertQuery' => ''
 		),
-		'TuteursHa' => array(
-			'className' => 'TuteursHa',
-			'joinTable' => 'tuteurs_has_eleves',
+		'Tuteur' => array(
+			'className' => 'Tuteur',
+			'joinTable' => 'eleves_tuteurs',
 			'foreignKey' => 'eleve_id',
-			'associationForeignKey' => 'tuteurs_ha_id',
+			'associationForeignKey' => 'tuteur_id',
 			'unique' => true,
 			'conditions' => '',
 			'fields' => '',

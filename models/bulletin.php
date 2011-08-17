@@ -3,8 +3,18 @@ class Bulletin extends AppModel {
 	var $name = 'Bulletin';
 	var $validate = array(
 		'bull_année' => array(
-			'date' => array(
-				'rule' => array('date'),
+			'notempty' => array(
+				'rule' => array('notempty'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'bull_periode' => array(
+			'notempty' => array(
+				'rule' => array('notempty'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
@@ -32,7 +42,7 @@ class Bulletin extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'annees_id' => array(
+		'annee_id' => array(
 			'numeric' => array(
 				'rule' => array('numeric'),
 				//'message' => 'Your custom message here',
@@ -46,9 +56,9 @@ class Bulletin extends AppModel {
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
 	var $belongsTo = array(
-		'Annees' => array(
-			'className' => 'Annees',
-			'foreignKey' => 'annees_id',
+		'Annee' => array(
+			'className' => 'Annee',
+			'foreignKey' => 'annee_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
@@ -56,11 +66,11 @@ class Bulletin extends AppModel {
 	);
 
 	var $hasAndBelongsToMany = array(
-		'ElevesHa' => array(
-			'className' => 'ElevesHa',
-			'joinTable' => 'eleves_has_bulletins',
+		'Eleve' => array(
+			'className' => 'Eleve',
+			'joinTable' => 'bulletins_eleves',
 			'foreignKey' => 'bulletin_id',
-			'associationForeignKey' => 'eleves_ha_id',
+			'associationForeignKey' => 'eleve_id',
 			'unique' => true,
 			'conditions' => '',
 			'fields' => '',
